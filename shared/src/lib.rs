@@ -1,5 +1,6 @@
 use std::fs;
 use std::env;
+use std::fmt;
 use std::error::Error;
 
 pub fn read_input() -> Result<Vec<String>, Box<dyn Error>> {
@@ -21,12 +22,25 @@ pub fn puzzle_part() -> PuzzlePart {
     }
 }
 
-#[cfg(test)]
-mod tests {
-    use super::*;
+#[derive(Debug)]
+pub struct ParseLineError {
+    line: String,
+    target: String,
+}
 
-    #[test]
-    fn it_works() {
-        todo!();
+impl ParseLineError {
+    pub fn new(target: &str, line: &str) -> ParseLineError {
+        ParseLineError {
+            line: line.to_string(),
+            target: target.to_string()
+        }
+    }
+}
+
+impl Error for ParseLineError {}
+
+impl fmt::Display for ParseLineError {
+    fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
+        write!(f, "The following line could not be parsed as {}: \n {}", self.target, self.line)
     }
 }
