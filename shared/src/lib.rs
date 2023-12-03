@@ -4,7 +4,13 @@ use std::fmt;
 use std::error::Error;
 
 pub fn read_input() -> Result<Vec<String>, Box<dyn Error>> {
-    let file = fs::read_to_string("./input.txt")?;
+    let args: Vec<String> = env::args().collect();
+    let file = if args.contains(&String::from("test")) {
+        "./test_input.txt"
+    } else {
+        "./input.txt"
+    };
+    let file = fs::read_to_string(file)?;
     Ok(file.split("\n").map(|e| e.to_string()).collect())
 }
 
