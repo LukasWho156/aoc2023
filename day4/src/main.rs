@@ -66,6 +66,7 @@ fn main() -> Result<(), Box<dyn Error>> {
             }).sum()
         },
         PuzzlePart::PartTwo => {
+            // there might be some smarter algorithm to do this if you look at the math, but this takes about a second to run, so why bother?
             let mut copies: Vec<i32> = vec![1; cards.clone().count()]; // clone isn't ideal here I think, but not quite sure how to avoid it easily. Still runs quick enough.
             cards.enumerate().for_each(|(i, c)| {
                 let max_offset = c.no_winning() + 1;
