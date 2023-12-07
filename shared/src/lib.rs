@@ -14,6 +14,7 @@ pub fn read_input() -> Result<Vec<String>, Box<dyn Error>> {
     Ok(file.split("\n").map(|e| e.to_string()).collect())
 }
 
+#[derive(Eq, PartialEq)]
 pub enum PuzzlePart {
     PartOne,
     PartTwo,
