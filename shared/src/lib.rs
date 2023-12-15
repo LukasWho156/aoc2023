@@ -11,6 +11,7 @@ pub fn read_input() -> Result<Vec<String>, Box<dyn Error>> {
         "./input.txt"
     };
     let file = fs::read_to_string(file)?;
+    let file = file.replace("\r", "");
     Ok(file.split("\n").map(|e| e.to_string()).collect())
 }
 
