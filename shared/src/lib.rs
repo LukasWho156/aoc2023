@@ -1,7 +1,11 @@
+pub mod astar;
+
 use std::fs;
 use std::env;
 use std::fmt;
 use std::error::Error;
+use std::time::Duration;
+use std::time::Instant;
 
 pub fn read_input() -> Result<Vec<String>, Box<dyn Error>> {
     let args: Vec<String> = env::args().collect();
