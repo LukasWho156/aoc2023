@@ -18,6 +18,15 @@ pub fn read_input() -> Result<Vec<String>, Box<dyn Error>> {
     Ok(file.split("\n").map(|e| e.to_string()).collect())
 }
 
+// could've probably made this method a lot earlier than day23,
+// but better late than never, right?
+pub fn read_map<T: From<char>>() -> Result<Vec<Vec<T>>, Box<dyn Error>> {
+    let input = read_input()?;
+    Ok(input.iter().filter(|line| line.len() > 0).map(|line| {
+        line.chars().map(|c| T::from(c)).collect()
+    }).collect())
+}
+
 #[derive(Eq, PartialEq)]
 pub enum PuzzlePart {
     PartOne,

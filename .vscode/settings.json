@@ -13,6 +13,7 @@
         ".\\day20\\Cargo.toml",
         ".\\day21\\Cargo.toml",
         ".\\day22\\Cargo.toml",
+        ".\\day23\\Cargo.toml",
         ".\\shared\\Cargo.toml"
     ]
 }
